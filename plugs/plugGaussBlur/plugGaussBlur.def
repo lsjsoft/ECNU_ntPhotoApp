@@ -1,0 +1,6 @@
+; plugGaussBlur.def : Declares the module parameters for the DLL.
+
+LIBRARY      "plugGaussBlur"
+
+EXPORTS
+    ; Explicit exports can go here

@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "plugGray", "plugs\plugGray\plugGray.vcproj", "{486F2EDB-9366-4817-80AC-155DB736C8EC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "plugInvert", "plugs\plugInvert\plugInvert.vcproj", "{DD7B0A02-F570-4AC5-B631-A8C553ACFD04}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "plugGaussBlur", "plugs\plugGaussBlur\plugGaussBlur.vcproj", "{3655A794-805D-48F1-85CF-A238F18C0A40}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "plugContrast", "plugs\plugContrast\plugContrast.vcproj", "{A6B641DA-1726-40B2-9294-A5361E9D5A0B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "plugBrighten", "plugs\plugBrighten\plugBrighten.vcproj", "{91E60CE7-520B-4F6F-B814-1263779932EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{486F2EDB-9366-4817-80AC-155DB736C8EC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{486F2EDB-9366-4817-80AC-155DB736C8EC}.Debug|Win32.Build.0 = Debug|Win32
+		{486F2EDB-9366-4817-80AC-155DB736C8EC}.Release|Win32.ActiveCfg = Release|Win32
+		{486F2EDB-9366-4817-80AC-155DB736C8EC}.Release|Win32.Build.0 = Release|Win32
+		{DD7B0A02-F570-4AC5-B631-A8C553ACFD04}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DD7B0A02-F570-4AC5-B631-A8C553ACFD04}.Debug|Win32.Build.0 = Debug|Win32
+		{DD7B0A02-F570-4AC5-B631-A8C553ACFD04}.Release|Win32.ActiveCfg = Release|Win32
+		{DD7B0A02-F570-4AC5-B631-A8C553ACFD04}.Release|Win32.Build.0 = Release|Win32
+		{3655A794-805D-48F1-85CF-A238F18C0A40}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3655A794-805D-48F1-85CF-A238F18C0A40}.Debug|Win32.Build.0 = Debug|Win32
+		{3655A794-805D-48F1-85CF-A238F18C0A40}.Release|Win32.ActiveCfg = Release|Win32
+		{3655A794-805D-48F1-85CF-A238F18C0A40}.Release|Win32.Build.0 = Release|Win32
+		{A6B641DA-1726-40B2-9294-A5361E9D5A0B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A6B641DA-1726-40B2-9294-A5361E9D5A0B}.Debug|Win32.Build.0 = Debug|Win32
+		{A6B641DA-1726-40B2-9294-A5361E9D5A0B}.Release|Win32.ActiveCfg = Release|Win32
+		{A6B641DA-1726-40B2-9294-A5361E9D5A0B}.Release|Win32.Build.0 = Release|Win32
+		{91E60CE7-520B-4F6F-B814-1263779932EE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{91E60CE7-520B-4F6F-B814-1263779932EE}.Debug|Win32.Build.0 = Debug|Win32
+		{91E60CE7-520B-4F6F-B814-1263779932EE}.Release|Win32.ActiveCfg = Release|Win32
+		{91E60CE7-520B-4F6F-B814-1263779932EE}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
