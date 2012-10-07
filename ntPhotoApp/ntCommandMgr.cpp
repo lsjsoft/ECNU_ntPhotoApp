@@ -2,6 +2,9 @@
 #include "ntCommandMgr.h"
 #include "ntCommand.h"
 
+/// 最大记录历史
+const unsigned int g_uiMaxCmdHistory = 30;
+
 ntCommandMgr::ntCommandMgr(void)
 {
 	m_pRootCmd = ntNew ntCommand(this);
@@ -22,6 +25,23 @@ void ntCommandMgr::pushCmd( ntCommand* pCmd )
 	pCurr->setNextCmd(pCmd);
 	pCmd->setPrevCmd(pCurr);
 	m_pCurrentCmd = pCmd;
+
+	unsigned int count= 0;
+	ntCommand* p = m_pRootCmd;
+	do
+	{
+		p = p->getNextCmd();
+		++count;
+	}
+	while(p);
+
+	while(count > g_uiMaxCmdHistory)
+	{
+		ntCommand* p = m_pRootCmd;
+		m_pRootCmd = m_pRootCmd->getNextCmd();
+		delete p;
+		--count;
+	}
 }
 
 void ntCommandMgr::destroyList( ntCommand* pCmd )

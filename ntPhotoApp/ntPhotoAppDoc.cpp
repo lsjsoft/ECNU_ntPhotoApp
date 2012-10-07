@@ -230,3 +230,8 @@ BOOL ntPhotoAppDoc::DoSave( LPCTSTR pszPathName, BOOL bReplace/*= TRUE*/ )
 	}
 	return TRUE;
 }
+
+void ntPhotoAppDoc::AddTex( const std::string& name, ntTexture32Ptr tex )
+{
+	m_Texs.insert( std::make_pair(name, tex));
+}

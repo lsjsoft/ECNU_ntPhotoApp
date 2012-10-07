@@ -11,6 +11,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "plugContrast", "plugs\plugC
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "plugBrighten", "plugs\plugBrighten\plugBrighten.vcproj", "{91E60CE7-520B-4F6F-B814-1263779932EE}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "plugText", "plugs\plugText\plugText.vcproj", "{137EB1EA-4144-475C-9E17-AAF7D408A7BA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ntPhotoApp", "ntPhotoApp\ntPhotoApp.vcproj", "{243571FF-D854-4244-95AE-0421AF33E9AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -37,6 +41,14 @@ Global
 		{91E60CE7-520B-4F6F-B814-1263779932EE}.Debug|Win32.Build.0 = Debug|Win32
 		{91E60CE7-520B-4F6F-B814-1263779932EE}.Release|Win32.ActiveCfg = Release|Win32
 		{91E60CE7-520B-4F6F-B814-1263779932EE}.Release|Win32.Build.0 = Release|Win32
+		{137EB1EA-4144-475C-9E17-AAF7D408A7BA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{137EB1EA-4144-475C-9E17-AAF7D408A7BA}.Debug|Win32.Build.0 = Debug|Win32
+		{137EB1EA-4144-475C-9E17-AAF7D408A7BA}.Release|Win32.ActiveCfg = Release|Win32
+		{137EB1EA-4144-475C-9E17-AAF7D408A7BA}.Release|Win32.Build.0 = Release|Win32
+		{243571FF-D854-4244-95AE-0421AF33E9AF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{243571FF-D854-4244-95AE-0421AF33E9AF}.Debug|Win32.Build.0 = Debug|Win32
+		{243571FF-D854-4244-95AE-0421AF33E9AF}.Release|Win32.ActiveCfg = Release|Win32
+		{243571FF-D854-4244-95AE-0421AF33E9AF}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

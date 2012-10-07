@@ -15,7 +15,7 @@ protected:
 	virtual void undo();
 
 protected:
-	ntTexture32Ptr m_orignalTex;
-	ntTexture32Ptr m_processTex;
-	ntTexture32Ptr m_handleTex;
+	ntTexture32Ptr m_orignalTex;	/// 原始的
+	ntTexture32Ptr m_processTex;	/// 处理后的
+	ntTexture32Ptr m_handleTex;		/// 当前的
 };

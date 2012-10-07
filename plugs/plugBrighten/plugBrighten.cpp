@@ -64,26 +64,8 @@ BOOL CplugBrightenApp::InitInstance()
 	return TRUE;
 }
 
-static const ntPlugInfo g_PlugInfo=
-{
-	"{4F6ED6CB-774F-9CEA-6D2D-47E4FE9DC9C5}",
-	"调节亮度",
-	"可以对图像进行亮度调节",
-	1,
-};
-
-PLUG_API bool plugGetInfo(ntPlugInfo* pInfo)
-{
-	AFX_MANAGE_STATE(AfxGetStaticModuleState());
-	if (!pInfo)
-	{
-		return false;
-	}
-
-	memcpy(pInfo, &g_PlugInfo, sizeof(ntPlugInfo));
-	return true;
-}
-
+cntPlugImplInfo("{4F6ED6CB-774F-9CEA-6D2D-47E4FE9DC9C5}", "调节亮度",
+	"可以对图像进行亮度调节", 1)
 
 PLUG_API bool plugExcute(ntPlugCallParam* pParam)
 {

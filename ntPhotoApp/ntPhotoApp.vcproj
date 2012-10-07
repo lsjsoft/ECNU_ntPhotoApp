@@ -194,6 +194,18 @@
 				Name="ResourceFiles"
 				>
 				<File
+					RelativePath=".\res\circle.cur"
+					>
+				</File>
+				<File
+					RelativePath=".\res\cursor1.cur"
+					>
+				</File>
+				<File
+					RelativePath=".\res\cursor_pen.cur"
+					>
+				</File>
+				<File
 					RelativePath=".\res\ntPhotoApp.ico"
 					>
 				</File>
@@ -207,6 +219,14 @@
 				</File>
 				<File
 					RelativePath=".\res\ntPhotoAppDoc.ico"
+					>
+				</File>
+				<File
+					RelativePath=".\res\pen.bmp"
+					>
+				</File>
+				<File
+					RelativePath=".\res\penbar.bmp"
 					>
 				</File>
 				<File
@@ -508,6 +528,14 @@
 						RelativePath=".\ntCommonDlg.h"
 						>
 					</File>
+					<File
+						RelativePath=".\ntDlgSelTrans.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\ntDlgSelTrans.h"
+						>
+					</File>
 				</Filter>
 			</Filter>
 			<Filter
@@ -571,6 +599,62 @@
 				</File>
 				<File
 					RelativePath=".\ntMenuHelper.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="OP"
+				>
+				<File
+					RelativePath=".\ntCmdAppendTex.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ntCmdAppendTex.h"
+					>
+				</File>
+				<File
+					RelativePath=".\ntMsgHandle.h"
+					>
+				</File>
+				<File
+					RelativePath=".\ntOp.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ntOp.h"
+					>
+				</File>
+				<File
+					RelativePath=".\ntOpCircle.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ntOpCircle.h"
+					>
+				</File>
+				<File
+					RelativePath=".\ntOpMgr.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ntOpMgr.h"
+					>
+				</File>
+				<File
+					RelativePath=".\ntOpNone.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ntOpNone.h"
+					>
+				</File>
+				<File
+					RelativePath=".\ntOpPen.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ntOpPen.h"
 					>
 				</File>
 			</Filter>

@@ -41,25 +41,8 @@ BEGIN_MESSAGE_MAP(CplugGaussBlurApp, CWinApp)
 END_MESSAGE_MAP()
 
 
-static const ntPlugInfo g_PlugInfo=
-{
-	"{9E4DC356-260C-D781-18E1-FE7FCA5D22E6}",
-	"高斯模糊",
-	"可以对图像进行模糊处理",
-	1,
-};
-
-PLUG_API bool plugGetInfo(ntPlugInfo* pInfo)
-{
-	AFX_MANAGE_STATE(AfxGetStaticModuleState());
-	if (!pInfo)
-	{
-		return false;
-	}
-
-	memcpy(pInfo, &g_PlugInfo, sizeof(ntPlugInfo));
-	return true;
-}
+cntPlugImplInfo("{9E4DC356-260C-D781-18E1-FE7FCA5D22E6}", "高斯模糊",
+	"可以对图像进行模糊处理", 1)
 
 PLUG_API bool plugExcute(ntPlugCallParam* pParam)
 {

@@ -66,25 +66,8 @@ CplugGrayApp::~CplugGrayApp()
 
 }
 
-static const ntPlugInfo g_PlugInfo=
-{
-	"{84FDF50E-B653-08A3-9BC1-D80255465C87}",
-	"灰化",
-	"可以把图像灰化",
-	1,
-};
-
-PLUG_API bool plugGetInfo(ntPlugInfo* pInfo)
-{
-	AFX_MANAGE_STATE(AfxGetStaticModuleState());
-	if (!pInfo)
-	{
-		return false;
-	}
-
-	memcpy(pInfo, &g_PlugInfo, sizeof(ntPlugInfo));
-	return true;
-}
+cntPlugImplInfo("{84FDF50E-B653-08A3-9BC1-D80255465C87}", 
+				"灰化", "可以把图像灰化", 1 );
 
 PLUG_API bool plugExcute(ntPlugCallParam* pParam)
 {

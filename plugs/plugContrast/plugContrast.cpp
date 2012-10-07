@@ -64,25 +64,8 @@ BOOL CplugContrastApp::InitInstance()
 	return TRUE;
 }
 
-static const ntPlugInfo g_PlugInfo=
-{
-	"{539C66AA-8A83-971F-9437-73630B2DEF3D}",
-	"调节对比度",
-	"可以对图像进行对比度调节",
-	1,
-};
-
-PLUG_API bool plugGetInfo(ntPlugInfo* pInfo)
-{
-	AFX_MANAGE_STATE(AfxGetStaticModuleState());
-	if (!pInfo)
-	{
-		return false;
-	}
-
-	memcpy(pInfo, &g_PlugInfo, sizeof(ntPlugInfo));
-	return true;
-}
+cntPlugImplInfo("{539C66AA-8A83-971F-9437-73630B2DEF3D}", "调节对比度",
+	"可以对图像进行对比度调节", 1)
 
 
 PLUG_API bool plugExcute(ntPlugCallParam* pParam)

@@ -1,0 +1,10 @@
+*.ilk
+*.exp
+*.pdb
+*.lib
+*.ncb
+*.suo
+*.aps
+*.user
+*.exe
+/output

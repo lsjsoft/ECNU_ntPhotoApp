@@ -14,6 +14,7 @@
 #include "ntMainFrm.h"
 #include "ntAppHelper.h"
 #include "ntPlugExtendService.h"
+#include "ntOpMgr.h"
 
 // ntPhotoAppView
 
@@ -30,6 +31,12 @@ BEGIN_MESSAGE_MAP(ntPhotoAppView, CView)
 	ON_COMMAND(ID_EDIT_REDO, &ntPhotoAppView::OnEditRedo)
 	ON_UPDATE_COMMAND_UI(ID_EDIT_REDO, &ntPhotoAppView::OnUpdateEditRedo)
 
+	ON_WM_LBUTTONDOWN()
+	ON_WM_LBUTTONUP()
+	ON_WM_KEYDOWN()
+	ON_WM_KEYUP()
+	ON_WM_SETCURSOR()
+	ON_WM_MOUSEMOVE()
 END_MESSAGE_MAP()
 
 // ntPhotoAppView construction/destruction
@@ -38,12 +45,17 @@ ntPhotoAppView::ntPhotoAppView()
 : m_pScreen(0)
 {
 	// TODO: add construction code here
-
+	m_pOpMgr = new ntOpMgr();
+	m_pOpMgr->start();
 }
 
 ntPhotoAppView::~ntPhotoAppView()
 {
 	delete m_pScreen;
+
+	m_pOpMgr->end();
+	delete m_pOpMgr;
+	m_pOpMgr = NULL;
 }
 
 BOOL ntPhotoAppView::PreCreateWindow(CREATESTRUCT& cs)
@@ -154,10 +166,20 @@ void ntPhotoAppView::renderView()
 
 	m_pScreen->drawTextureWrap( m_background, noClipRecti);
 
+
 	ntTexture32Ptr spWorkTexture= pDoc->getWorkTexture();
 	if (spWorkTexture)
 	{
 		m_pScreen->drawTextureEx( spWorkTexture, noClipRecti);
+
+		const ntTexture32Ptrs& texs= pDoc->getTexs();
+		ntTexture32Ptrs::const_iterator it= texs.begin();
+		while(it!= texs.end())
+		{
+			ntTexture32Ptr obj= it->second;
+			m_pScreen->drawTextureEx( obj, noClipRecti);
+			++it;
+		}
 
 		ntRecti drawRect(0, 0, spWorkTexture->getWidth(),
 			spWorkTexture->getHeight());
@@ -173,7 +195,7 @@ void ntPhotoAppView::OnEditUndo()
 	// TODO: Add your command handler code here
 	ntPhotoAppDoc* pDoc = GetDocument();
 	pDoc->getCmdMgr()->undo();
-	Invalidate(TRUE);
+	DoRefresh();
 }
 
 void ntPhotoAppView::OnUpdateEditUndo(CCmdUI *pCmdUI)
@@ -187,7 +209,7 @@ void ntPhotoAppView::OnEditRedo()
 {
 	ntPhotoAppDoc* pDoc = GetDocument();
 	pDoc->getCmdMgr()->redo();
-	Invalidate(TRUE);
+	DoRefresh();
 }
 
 void ntPhotoAppView::OnUpdateEditRedo(CCmdUI *pCmdUI)
@@ -211,4 +233,48 @@ void ntPhotoAppView::OnUpdatePlugRange( CCmdUI *pCmdU )
 	ntPlugExtendService* pSvr= ntGetService(ntPlugExtendService);
 	const ntPlugInfo* pInfo= pSvr->getPlug(pCmdU->m_nID);
 	pCmdU->Enable(true);
+}
+
+void ntPhotoAppView::OnLButtonDown(UINT nFlags, CPoint point)
+{
+	// TODO: Add your message handler code here and/or call default
+	m_pOpMgr->OnMouseLBDown( ntPointi(point.x, point.y), 0);
+	CView::OnLButtonDown(nFlags, point);
+}
+
+void ntPhotoAppView::OnLButtonUp(UINT nFlags, CPoint point)
+{
+	// TODO: Add your message handler code here and/or call default
+	m_pOpMgr->OnMouseLBUp( ntPointi(point.x, point.y), 0);
+	CView::OnLButtonUp(nFlags, point);
+}
+
+void ntPhotoAppView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
+{
+	// TODO: Add your message handler code here and/or call default
+	m_pOpMgr->OnKeyDown( nChar, 0);
+	CView::OnKeyDown(nChar, nRepCnt, nFlags);
+}
+
+void ntPhotoAppView::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
+{
+	// TODO: Add your message handler code here and/or call default
+	m_pOpMgr->OnKeyUp( nChar, 0);
+	CView::OnKeyUp(nChar, nRepCnt, nFlags);
+}
+
+BOOL ntPhotoAppView::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message)
+{
+	// TODO: Add your message handler code here and/or call default
+	::SetCursor( m_pOpMgr->getActiveCursor());
+	return TRUE;
+	return CView::OnSetCursor(pWnd, nHitTest, message);
+}
+
+void ntPhotoAppView::OnMouseMove(UINT nFlags, CPoint point)
+{
+	// TODO: Add your message handler code here and/or call default
+	m_pOpMgr->OnMouseMove(ntPointi(point.x, point.y), 0);
+
+	CView::OnMouseMove(nFlags, point);
 }

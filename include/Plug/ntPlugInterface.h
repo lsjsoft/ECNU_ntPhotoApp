@@ -122,7 +122,67 @@ struct ntPlugCallParam
 	{
 		pSource->copyFrom( pSourceBackup );
 	}
+
+	void draw()
+	{
+		pPreviewFunc();
+	}
 };
+
+__forceinline bool drawNature(ntPlugPix* adst, unsigned int dstW, unsigned int dstH,
+				ntPlugPix* asrc, unsigned int srcW, unsigned int srcH,
+				unsigned int drawX, unsigned int drawY)
+{
+	if ( drawX >= dstW || drawY >= dstH )
+	{
+		return false;
+	}
+
+	unsigned int drawW = drawX+srcW> dstW ? dstW-drawX: dstW;
+	unsigned int drawH = drawY+srcH> dstH ? dstH-drawY: dstH;
+	ntPlugPix* pSrc= asrc;
+	ntPlugPix* pDest= adst + drawY*dstW + drawX;
+	unsigned int copyLineSize= sizeof(ntPlugPix)*drawW;
+
+	for(unsigned int y=0; y<drawH; ++y)
+	{
+		memcpy(pDest, pSrc, copyLineSize);
+		pDest+= dstW;
+		pSrc+= srcW;
+	}
+
+	return true;
+}
+
+__forceinline bool drawNatureA8(ntPlugPix* adst, unsigned int dstW, unsigned int dstH,
+				unsigned char* asrc, unsigned int srcW, unsigned int srcH,
+				unsigned int drawX, unsigned int drawY, unsigned int color)
+{
+	if ( drawX >= dstW || drawY >= dstH )
+	{
+		return false;
+	}
+
+	unsigned int drawW = drawX+srcW> dstW ? dstW-drawX: srcW;
+	unsigned int drawH = drawY+srcH> dstH ? dstH-drawY: srcH;
+
+	for(unsigned int y=0; y<drawH; ++y)
+	{
+		unsigned char* pSrc=asrc + y * srcW;
+		ntPlugPix* pDest= adst + (y+drawY)*dstW + drawX;
+
+		for(unsigned int x=0; x<drawW; ++x)
+		{
+			pDest->a = *pSrc;
+			pDest->r = pDest->g = pDest->b = color;
+			++pDest;
+			++pSrc;
+		}
+	}
+
+	return true;
+}
+
 
 typedef bool (*pntPlugExcute)(ntPlugCallParam* pParam);
 
@@ -130,13 +190,29 @@ typedef bool (*pntPlugExcute)(ntPlugCallParam* pParam);
 
 #define cntPlugExcute "plugExcute"
 
+#define cntPlugImplInfo(guid, cap, desc, ver) \
+static const ntPlugInfo g_PlugInfo= \
+{ \
+	guid, \
+	cap, \
+	desc, \
+	ver, \
+}; \
+PLUG_API bool plugGetInfo(ntPlugInfo* pInfo) \
+{ \
+	AFX_MANAGE_STATE(AfxGetStaticModuleState()); \
+	if (!pInfo) \
+	{ \
+		return false; \
+	} \
+	memcpy(pInfo, &g_PlugInfo, sizeof(ntPlugInfo)); \
+	return true; \
+}
+
+
 /*
 
-{84FDF50E-B653-08A3-9BC1-D80255465C87}
-{343FBE11-4A03-4660-FB54-39D818EE9C57}
-{FCEF31EF-6F6B-23B4-9247-E390A43333CC}
 {F7047433-E9D3-DDC0-3831-7ECD03E8FC71}
-{9E4DC356-260C-D781-18E1-FE7FCA5D22E6}
 {2FE74142-8DFD-42AE-37FF-1B3EBDF7032F}
 {2B6998D8-81A5-9352-5E13-F6F827735824}
 {2CA43756-EFE0-6525-AABF-47939DC53424}
@@ -150,7 +226,6 @@ typedef bool (*pntPlugExcute)(ntPlugCallParam* pParam);
 {BCB84F2B-F2C1-C65D-E92A-646285B5B448}
 {81806DA4-F16C-851C-C163-20A3CEDC78EE}
 {0991B148-716B-1B12-7776-C54325F2F166}
-{539C66AA-8A83-971F-9437-73630B2DEF3D}
 {D43ABB4F-FC82-C46B-1131-F81BE7B5A773}
 {E2A41238-B497-9DC4-1155-AF99FFE66CD3}
 {E052B059-9EAC-D1E4-2FA1-C9D933396436}
@@ -198,7 +273,6 @@ typedef bool (*pntPlugExcute)(ntPlugCallParam* pParam);
 {848AB38F-8CAE-7DB5-6296-5AFB3F25378D}
 {62E6CB40-6635-E8D9-36F7-189AD04D47AA}
 {715DF29F-D817-D736-72F7-249C66DB26F8}
-{4F6ED6CB-774F-9CEA-6D2D-47E4FE9DC9C5}
 {AF7B0B7D-DD13-CF7D-917A-D8F16107C2FE}
 {208C9B20-E8D3-9972-180B-1E6B2868D6AC}
 {B5D8A2B7-F75C-D517-8000-B71F9F71AF98}

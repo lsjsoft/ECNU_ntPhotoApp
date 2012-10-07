@@ -7,6 +7,7 @@
 #include "ntTexture.h"
 
 class ntCommandMgr;
+typedef std::map<std::string, ntTexture32Ptr> ntTexture32Ptrs;
 
 class ntPhotoAppDoc : public CDocument
 {
@@ -38,9 +39,19 @@ public:
 	virtual void Dump(CDumpContext& dc) const;
 #endif
 
+	void AddTex( const std::string& name, ntTexture32Ptr tex);
+	void RemoveTex( const std::string& name)
+	{
+		m_Texs.erase(name);
+	}
+
+	const ntTexture32Ptrs& getTexs() const { return m_Texs; }
+
 protected:
 
 	ntTexture32Ptr m_workTexture;
+
+	ntTexture32Ptrs m_Texs;
 
 	ntCommandMgr* m_pCmdMgr;
 

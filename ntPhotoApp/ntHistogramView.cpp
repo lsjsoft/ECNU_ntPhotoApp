@@ -15,6 +15,7 @@
 #include "ntMainFrm.h"
 #include <math.h>
 
+
 // ntHistogramView dialog
 const DWORD UPDATE_HISTOGRAM_VIEW = 100;
 

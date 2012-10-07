@@ -56,6 +56,13 @@ public:
 	{
 		return ( red * 76 + green * 150 + blue * 29 ) >> 8;	
 	}
+
+	void fromCOLORREF(COLORREF c)
+	{
+		red = (unsigned char)(c & 0xFF);
+		green = (unsigned char)( (c >> 8 ) & 0xFF);
+		blue = (unsigned char)( (c >> 16 ) & 0xFF);
+	}
 };
 
 #pragma pack(pop)

@@ -122,12 +122,33 @@ typedef ntCountedPtr<ntTexture32> ntTexture32Ptr;
 class ntTexture32: public ntTexture<ntPixel32>
 {
 public:
+
+	void setPix(unsigned int x, unsigned int y, const ntPixel32& px);
+
+	void drawPixel( unsigned int x, unsigned int y, unsigned int color );
+
+	bool bltTo(ntTexture32Ptr dest);
+
+	void erase()
+	{
+		ntPixel32* p = getBuffer();
+		memset(p, 0, sizeof(ntPixel32)*getSize());
+	}
+
 	ntTexture32Ptr clone()
 	{
 		ntTexture32Ptr pNewTex= ntNew ntTexture32();
 		pNewTex->m_spBuffer = m_spBuffer->clone();
 		pNewTex->m_textureInfo = m_textureInfo;
 		return pNewTex;
+	}
+
+	ntTexture32Ptr createCompatibleTex()
+	{
+		ntTexture32Ptr tex= clone();
+		ntPixel32* p = tex->getBuffer();
+		memset(p, 0, sizeof(ntPixel32)*tex->getSize());
+		return tex;
 	}
 
 	~ntTexture32()

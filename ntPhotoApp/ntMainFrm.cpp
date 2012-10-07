@@ -11,6 +11,7 @@
 #include "ntPlugBaseService.h"
 #include "ntService.h"
 #include "ntPlugExtendService.h"
+#include "ntOpMgr.h"
 
 
 // ntMainFrame
@@ -162,4 +163,3 @@ void ntMainFrame::GetMessageString( UINT nID, CString& rMessage ) const
 
 	__super::GetMessageString(nID, rMessage);
 }
-

@@ -32,9 +32,19 @@ public:
 
 	std::vector<std::string> m_extendPlugList;
 
+	CToolBar* m_pPenToolbar;
+
+	void HideToobar();
+
 // Generated message map functions
 protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+public:
+	afx_msg void OnModeNormalmode();
+	afx_msg void OnModePenmode();
+	afx_msg void OnSelPenColor();
+	afx_msg void OnSelPenTrans();
+	afx_msg void OnSelCircleMode();
 };
